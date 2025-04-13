@@ -2,9 +2,21 @@
 # Grupa: 332CC
 
 ## 1. Descriere Generala:
-Obiectivul acestui proiect a fost dezvoltarea unui Ebook Reader accesibil si OpenSource, abordat din punctul de vedere al unui Arhitect de Sistem. Dispozitivul este conceput pentru a putea fi fabricat la scara larga.
+Acest repository contine fisierele de design hardware pentru proiectul OpenBook, un e-book reader ieftin si open source, generate in cadrul fazei EVT. Obiectivul acestei faze a fost transformarea specificatiilor de sistem intr-un design hardware functional si integrat mecanic, pregatit pentru fabricarea primelor prototipuri.
 
-Procesul de dezvoltare a inclus etapele standard: crearea schemei electrice, proiectarea layout-ului PCB, modelarea 3D a componentelor si integrarea ansamblului intr-o carcasa.
+## Etapele Initiale ale Dezvoltarii EVT (Rezumat)
+
+Dezvoltarea designului livrat aici a urmat cativa pasi cheie:
+
+1.  **Clarificarea Specificatiilor si Planificarea:** Am inceput prin analiza detaliata a specificatiilor primite de la Arhitectul de Sistem pentru a intelege complet cerintele functionale, de performanta si de cost. Am adresat intrebari pentru clarificarea oricaror ambiguitati si am stabilit un plan de lucru initial. Tot in aceasta etapa am configurat mediul de dezvoltare in Fusion si repository-ul Git.
+
+2.  **Selectia Componentelor si Crearea Librariilor:** Pe baza specificatiilor, am selectat componentele electronice specifice (Part Numbers), acordand o atentie deosebita costului, disponibilitatii pe termen lung si performantei. Pentru fiecare componenta aleasa, am creat sau validat librariile necesare in Fusion 360: simbolul schematic, footprint-ul PCB (conform datasheet) si, unde a fost posibil, modelul 3D asociat. Am inceput compilarea unui Bill of Materials (BOM) preliminar.
+
+3.  **Captura Schematica (Schematic Capture):** Folosind librariile create, am desenat diagrama schematica in Fusion 360. Aceasta reprezinta conexiunile logice dintre toate componentele electronice. Am structurat schema pe module functionale (ex: Alimentare, Procesor, Memorie, Interfata Display, etc.) pentru claritate si am rulat verificari ERC (Electrical Rule Check) pentru a detecta erori de baza.
+
+4.  **Proiectarea PCB (PCB Layout) - Faza Initiala:** Am inceput transpunerea schemei intr-un layout fizic pe placa de circuit imprimat (PCB). Aceasta a inclus definirea conturului placii (conform dimensiunilor impuse de carcasa), definirea structurii straturilor (layer stackup) si plasarea initiala a componentelor critice (conectori, circuite integrate principale, componente cu constrangeri mecanice), tinand cont de fluxul de semnal si constrangerile carcasei.
+
+5.  **Modelare 3D si Integrare Mecanica Preliminara:** in paralel cu layout-ul PCB, am creat modele 3D simplificate, dar dimensional corecte, pentru elementele non-PCB majore (Display E-Ink, Baterie LiPo). Am inceput asamblarea virtuala in Fusion, combinand modelul 3D al PCB-ului (cu componentele plasate), modelele display-ului si bateriei, si modelul 3D al carcasei (primit) pentru a verifica potrivirea generala si a identifica potentiale conflicte de spatiu.
 
 ## 2. Diagrama Bloc
 ![Diagrama](Images/diagrama_bloc.png)
@@ -13,7 +25,7 @@ Procesul de dezvoltare a inclus etapele standard: crearea schemei electrice, pro
 | Device | Value | Check_Price | Datasheet |
 |--------|-------|-------------|-----------|
 | ADAFRUIT_LEDCHIP-LED0603 | - | [Link](https://www.snapeda.com/parts/KP-1608SURCK/Kingbright/view-part/?ref=search&t=LED%200603) | [Link](https://www.snapeda.com/parts/KP-1608SURCK/Kingbright/datasheet/) |
-| SJ | - | [Link](https://grabcad.com/library/solder-jumpers-1) | - |
+| SJ | - | [Link](https://grabcad.com/library/solder-jumpers-1) | [Link](https://grabcad.com/library/solder-jumpers-1) |
 | EAGLE-LTSPICE_C | 0.1uF/50V | [Link](https://componentsearchengine.com/part-view/CC0402MRX5R5BB106/YAGEO) | [Link](https://componentsearchengine.com/Datasheets/2/CC0402MRX5R5BB106.pdf) |
 | ESP32_WROVER_EAGLE-LTSPICE_R | 0.47 | [Link](https://componentsearchengine.com/part-view/R0402%201%25%20100%20K%20(RC0402FR-07100KL)/YAGEO) | [Link](https://www.yageo.com/upload/media/product/products/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf) |
 | ESP32_WROVER_EAGLE-LTSPICE_R | 100K | [Link](https://componentsearchengine.com/part-view/R0402%201%25%20100%20K%20(RC0402FR-07100KL)/YAGEO) | [Link](https://www.yageo.com/upload/media/product/products/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf) |
